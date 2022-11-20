@@ -13,7 +13,8 @@ set ignorecase
 set scrolloff=30
 set history=300
 set showmode
-
+set idearefactormode=keep
+set ideajoin
 set number
 set relativenumber
 
@@ -28,6 +29,8 @@ inoremap jj <Esc>
 " ================================================================================================
 " = No Leader Keymaps =====================================
 " ================================================================================================
+
+
 nmap ge <action>(GotoNextError)
 nmap gt <action>(GotoTest)
 nmap gm <action>(MethodUp)
@@ -64,20 +67,25 @@ let mapleader=" "
 set which-key
 set notimeout
 set easymotion
-"set sneak
+
+" ================================================================================================
+" 👻👻👻 common leader keys 👻👻👻
+" ================================================================================================
+map <leader>d <Action>(Debug)
+map <leader>c <Action>(Stop)
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+map <leader>r <Action>(RenameElement)
+map <leader>o <Action>(FileStructurePopup)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 
 map <Leader> <Plug>(easymotion-prefix)
-
-"用s触发 easymotion-s，原来的s键功能可以使用xi来实现
-nmap s <Plug>(easymotion-s)
+nmap s <Plug>(easymotion-s) "用s触发 easymotion-s，原来的s键功能可以使用xi来实现
 nmap <Leader>l <Plug>(easymotion-sl)
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 nmap <Leader>e <Plug>(easymotion-e)
-nmap <Leader>b <Plug>(easymotion-b)
-
-" d: diff
-nmap <leader>dd <action>(Vcs.ShowTabbedFileHistory)
 
 " f: Find/Format ⭐️
 let g:WhichKeyDesc_FindOrFormat = "<leader>f FindOrFormat"
