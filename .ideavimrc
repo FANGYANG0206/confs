@@ -73,6 +73,7 @@ nmap s <Plug>(easymotion-s)
 nmap <Leader>l <Plug>(easymotion-sl)
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
+nmap <Leader>e <Plug>(easymotion-e)
 
 " d: diff
 nmap <leader>dd <action>(Vcs.ShowTabbedFileHistory)
@@ -106,24 +107,30 @@ nmap <leader>gp :action Git.Pull<CR>
 let g:WhichKeyDesc_Git_Fetch = "<leader>gp GitFetch"
 nmap <leader>gf :action Git.Fetch<CR>
 
-" i: Insert ⭐️
-"let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
-"nmap <leader>i f(a
-
-" j: add Semicolon and goto nextline⭐️
-" let g:WhichKeyDesc_InsertSemicolon = "<leader>j InsertSemicolon"
-" nmap <leader>j A;<ESC>o
-
-" l: lsp: Language server protocol (align with neovim)⭐️
-"let g:WhichKeyDesc_LSP = "<leader>l LSP"
-"let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
-"nmap <leader>lr <action>(RenameElement)
-
+" e: Extract
+" extract method/function
+vmap <leader>em <action>(ExtractMethod)
+" extract constant
+vmap <leader>ec <action>(IntroduceConstant)
+" extract field
+vmap <leader>ef <action>(IntroduceField)
+" extract variable
+vmap <leader>ev <action>(IntroduceVariable)
 
 " n: No ⭐️
 let g:WhichKeyDesc_No_Highlight = "<leader>nl NoHighlight"
 nmap <leader>nl :nohlsearch<CR>
 
+" w: Window ⭐️
+let g:WhichKeyDesc_Windows = "<leader>w Windows"
+let g:WhichKeyDesc_Windows_maximize = "<leader>wo maximize"
+nmap <leader>wo <action>(UnsplitAll) \| <action>(HideAllWindows)
+let g:WhichKeyDesc_Windows_splitWindowVertically = "<leader>wr splitWindowVertically"
+nmap <leader>wr <action>(Macro.splitRightAndMove)
+let g:WhichKeyDesc_Windows_closeActiveWindow = "<leader>wc closeActiveWindow"
+nmap <leader>wc <c-w>c
+
+" --------------- below is not used -------------------
 
 " s: Show ⭐️
 "let g:WhichKeyDesc_Show = "<leader>s Show"
@@ -144,15 +151,6 @@ nmap <leader>nl :nohlsearch<CR>
 "let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn Rename"
 "map <leader>rn <action>(RenameElement)
 
-" w: Window ⭐️
-let g:WhichKeyDesc_Windows = "<leader>w Windows"
-let g:WhichKeyDesc_Windows_maximize = "<leader>wo maximize"
-nmap <leader>wo <action>(UnsplitAll) \| <action>(HideAllWindows)
-let g:WhichKeyDesc_Windows_splitWindowVertically = "<leader>wr splitWindowVertically"
-nmap <leader>wr <action>(Macro.splitRightAndMove)
-let g:WhichKeyDesc_Windows_closeActiveWindow = "<leader>wc closeActiveWindow"
-nmap <leader>wc <c-w>c
-
 " z: zip(fold) ⭐️
 "let g:WhichKeyDesc_Zip = "<leader>z Zip"
 "let g:WhichKeyDesc_Zip_unZipAll = "<leader>zo unZipAll"
@@ -167,12 +165,16 @@ nmap <leader>wc <c-w>c
 " e: Toggle Explorer ⭐️
 "let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e ToggleExplorer"
 "nmap <leader>e <action>(ActivateProjectToolWindow)
-" e: Extract
-" extract method/function
-vmap <leader>em <action>(ExtractMethod)
-" extract constant
-vmap <leader>ec <action>(IntroduceConstant)
-" extract field
-vmap <leader>ef <action>(IntroduceField)
-" extract variable
-vmap <leader>ev <action>(IntroduceVariable)
+
+" i: Insert ⭐️
+"let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
+"nmap <leader>i f(a
+
+" j: add Semicolon and goto nextline⭐️
+" let g:WhichKeyDesc_InsertSemicolon = "<leader>j InsertSemicolon"
+" nmap <leader>j A;<ESC>o
+
+" l: lsp: Language server protocol (align with neovim)⭐️
+"let g:WhichKeyDesc_LSP = "<leader>l LSP"
+"let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
+"nmap <leader>lr <action>(RenameElement)
